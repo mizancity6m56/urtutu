@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Number Generator | Higher IT Institute</title>
+    <title>Higher IT Institute - Secure Random Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -28,78 +28,187 @@
             background: linear-gradient(135deg, #1a2980, #26d0ce);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             padding: 20px;
             color: #333;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            margin: 0 auto;
         }
         
-        /* Header Styles */
-        .header {
+        /* Agency Header */
+        .agency-header {
             background: linear-gradient(90deg, #182848, #4b6cb7);
             color: white;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .logo {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            color: #4fc3f7;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Auth Container */
-        .auth-container {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .auth-box {
-            width: 100%;
-            max-width: 500px;
-            background: white;
+            padding: 15px 25px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        .agency-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .agency-info h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .agency-info p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Announcement Box */
+        .announcement-box {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border-radius: 15px;
+            margin: 0 20px 20px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #fff;
+        }
+        
+        .announcement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .announcement-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .announcement-icon {
+            font-size: 1.8rem;
+        }
+        
+        .announcement-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .announcement-content.active {
+            max-height: 1000px;
+            padding: 20px;
+        }
+        
+        .announcement-content h3 {
+            color: #d35400;
+            margin: 15px 0 10px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #f1c40f;
+            padding-bottom: 5px;
+        }
+        
+        .announcement-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        .announcement-content ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .announcement-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .announcement-content li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        .important-note {
+            background: #f1c40f;
+            border-left: 4px solid #e67e22;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-icon.active {
+            transform: rotate(180deg);
+        }
+        
+        /* Auth Section */
+        .auth-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
             padding: 30px;
-            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
         }
         
         .tabs {
@@ -254,15 +363,14 @@
             margin-top: 15px;
         }
         
-        /* Generator Styles */
+        /* Generator Section */
         .generator-section {
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
             display: none;
-        }
-        
-        .generator-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
         }
         
         .generator-header {
@@ -444,6 +552,7 @@
             color: white;
             padding: 30px 20px;
             text-align: center;
+            border-radius: 15px;
         }
         
         .contact-grid {
@@ -486,8 +595,10 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2rem;
+            .agency-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
             }
             
             .controls {
@@ -498,7 +609,7 @@
                 flex-direction: column;
             }
             
-            .auth-container, .generator-section {
+            .auth-section, .generator-section {
                 padding: 25px;
             }
         }
@@ -506,125 +617,163 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-lock"></i>
+        <!-- Agency Header -->
+        <div class="agency-header">
+            <div class="agency-logo">
+                <div class="logo-circle">
+                    <i class="fas fa-laptop-code"></i>
                 </div>
-                <h1>Secure Random Number Generator</h1>
-                <p>Generate custom random numbers with advanced security features</p>
+                <div class="agency-info">
+                    <h1>Higher IT Institute</h1>
+                    <p>Professional IT Training & Services</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/higheritinstitute" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.youtube.com/@Higher-ITInstitute" class="social-icon" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="mailto:higheritinstitute@gmail.com" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
         </div>
         
-        <!-- Authentication Section -->
-        <div class="auth-container" id="authContainer">
-            <div class="auth-box">
-                <div class="tabs">
-                    <div class="tab active" data-tab="signup">Sign Up</div>
-                    <div class="tab" data-tab="login">Log In</div>
+        <!-- Announcement Box -->
+        <div class="announcement-box">
+            <div class="announcement-header" id="announcementToggle">
+                <div class="announcement-title">
+                    <i class="fas fa-bullhorn announcement-icon"></i>
+                    <span>𝗕𝗜𝗡 নাম্বার কি? | Important Information</span>
+                </div>
+                <div class="toggle-icon" id="toggleIcon">▼</div>
+            </div>
+            <div class="announcement-content" id="announcementContent">
+                <p><strong>BIN এর পূর্ণরুপ 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗜𝗱𝗲𝗻𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗡𝘂𝗺𝗯𝗲𝗿.</strong> প্রতিটি ব্যবসায় একটি অদ্বিতীয় বিজনেস আইডেন্টিফিকেশন নম্বর (𝗕𝗜𝗡) থাকে। এই নম্বরটিকে বিন নম্বর (BIN Number) বলা হয়।</p>
+                
+                <p>আপনি আপনার ব্যবসা প্রতিষ্ঠানের জন্য ১৩ ডিজিটের একটি ইউনিক বিজনেস আইডেনটিফিকেশন করিয়ে নিতে পারেন।</p>
+                
+                <div class="important-note">
+                    🔶 জুন, 2021 থেকে আপনি যদি এড এর পেমেন্ট সেটিংস থেকে আপনার বিজনেসের BIN নাম্বার যুক্ত না করেন, সেক্ষেত্রে এক্সট্রা ১৫% ভ্যাট ফেইসবুক আপনার কার্ড থেকে কেটে রাখবে।
                 </div>
                 
-                <!-- Signup Form -->
-                <div class="form-container active" id="signupForm">
-                    <div class="form-header">
-                        <h2>Create Account</h2>
-                        <p>Register to access the number generator</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="mobile">
-                            <i class="fas fa-mobile-alt"></i>
-                            Mobile Number
-                        </label>
-                        <div class="input-group">
-                            <i class="fas fa-phone"></i>
-                            <input type="tel" id="mobile" placeholder="Enter your mobile number">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password">
-                            <i class="fas fa-lock"></i>
-                            Password
-                        </label>
-                        <div class="input-group">
-                            <i class="fas fa-key"></i>
-                            <input type="password" id="password" placeholder="Create a password (min 6 characters)">
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-primary" id="signupBtn">
-                        <i class="fas fa-user-plus"></i> Create Account
-                    </button>
-                </div>
+                <p>অর্থাৎ আপনি যদি বাংলাদেশের ক্রেডিট/ডেবিট কার্ড ইউজ করে এড চালিয়ে থাকেন তাহলে সেখান থেকে একবার ১৫% কাটবে আবার ফেইসবুকে BIN Number না দিলে ফেইসবুকও এড বাজেটের উপর এক্সট্রা ১৫% ধরে কেটে রাখবে।</p>
                 
-                <!-- Login Form -->
-                <div class="form-container" id="loginForm">
-                    <div class="form-header">
-                        <h2>Account Login</h2>
-                        <p>Sign in to your account</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="loginMobile">
-                            <i class="fas fa-mobile-alt"></i>
-                            Mobile Number
-                        </label>
-                        <div class="input-group">
-                            <i class="fas fa-phone"></i>
-                            <input type="tel" id="loginMobile" placeholder="Enter your mobile number">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="loginPassword">
-                            <i class="fas fa-lock"></i>
-                            Password
-                        </label>
-                        <div class="input-group">
-                            <i class="fas fa-key"></i>
-                            <input type="password" id="loginPassword" placeholder="Enter your password">
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-primary" id="loginBtn">
-                        <i class="fas fa-sign-in-alt"></i> Log In
-                    </button>
-                </div>
+                <h3>👉 বিন নম্বরটি কাদের জন্য?</h3>
                 
-                <!-- Security Code Box -->
-                <div class="security-box" id="securityBox">
-                    <h3>
-                        <i class="fas fa-shield-alt"></i>
-                        Account Activation Required
-                    </h3>
-                    <p>For your security, please enter the 20-digit security code below to activate your account.</p>
-                    
-                    <div class="form-group">
-                        <div class="input-group">
-                            <i class="fas fa-lock"></i>
-                            <input type="text" id="securityCode" placeholder="Enter 20-digit security code">
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-primary" id="activateBtn">
-                        <i class="fas fa-check-circle"></i> Activate Account
-                    </button>
-                    
-                    <p class="security-note">Note: Each security code can only be used once per login session.</p>
-                </div>
+                <ul>
+                    <li>যারা ফেসবুকে নিজের ব্যবসা তৈরি এবং প্রচার করতে চায়।</li>
+                    <li>যারা ফেসবুক বুস্টিং নিয়ে কাজ করেন।</li>
+                    <li>যারা ফেসবুকে কম খরচে নিজেদের কাস্টমার তৈরি করতে চায়।</li>
+                    <li>যারা ফেসবুকে মার্কেটিং নিয়ে কাজ করেন।</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Auth Section -->
+        <div class="auth-section" id="authSection">
+            <div class="tabs">
+                <div class="tab active" data-tab="signup">Sign Up</div>
+                <div class="tab" data-tab="login">Log In</div>
             </div>
             
-            <div class="info-box">
-                <p><i class="fas fa-info-circle"></i> Your security is our priority. All generated numbers are created securely and never stored.</p>
+            <!-- Signup Form -->
+            <div class="form-container active" id="signupForm">
+                <div class="form-header">
+                    <h2>Create Account</h2>
+                    <p>Register to access the random number generator</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile">
+                        <i class="fas fa-mobile-alt"></i>
+                        Mobile Number
+                    </label>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="mobile" placeholder="Enter your mobile number">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="input-group">
+                        <i class="fas fa-key"></i>
+                        <input type="password" id="password" placeholder="Create a password (min 6 characters)">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="signupBtn">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="form-container" id="loginForm">
+                <div class="form-header">
+                    <h2>Account Login</h2>
+                    <p>Sign in to your account</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginMobile">
+                        <i class="fas fa-mobile-alt"></i>
+                        Mobile Number
+                    </label>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="loginMobile" placeholder="Enter your mobile number">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="input-group">
+                        <i class="fas fa-key"></i>
+                        <input type="password" id="loginPassword" placeholder="Enter your password">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Log In
+                </button>
+            </div>
+            
+            <!-- Security Code Box -->
+            <div class="security-box" id="securityBox">
+                <h3>
+                    <i class="fas fa-shield-alt"></i>
+                    Account Activation Required
+                </h3>
+                <p>For your security, please enter the 20-digit security code below to activate your account.</p>
+                
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="text" id="securityCode" placeholder="Enter 20-digit security code">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="activateBtn">
+                    <i class="fas fa-check-circle"></i> Activate Account
+                </button>
+                
+                <p class="security-note">Note: Each security code can only be used once per login session.</p>
             </div>
         </div>
         
         <!-- Generator Section -->
         <div class="generator-section" id="generatorSection">
             <div class="generator-header">
-                <h2>Random Number Generator</h2>
+                <h2>Secure Random Number Generator</h2>
                 <p>Welcome! Configure and generate your random numbers</p>
             </div>
             
@@ -755,7 +904,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Elements
-            const authContainer = document.getElementById('authContainer');
+            const authSection = document.getElementById('authSection');
             const generatorSection = document.getElementById('generatorSection');
             const signupForm = document.getElementById('signupForm');
             const loginForm = document.getElementById('loginForm');
@@ -763,6 +912,9 @@
             const notification = document.getElementById('notification');
             const notificationText = document.getElementById('notificationText');
             const tabs = document.querySelectorAll('.tab');
+            const announcementToggle = document.getElementById('announcementToggle');
+            const announcementContent = document.getElementById('announcementContent');
+            const toggleIcon = document.getElementById('toggleIcon');
             
             // Buttons
             const signupBtn = document.getElementById('signupBtn');
@@ -786,6 +938,12 @@
             // Current user state
             let currentUser = null;
             let generatedNumbers = [];
+            
+            // Toggle announcement content
+            announcementToggle.addEventListener('click', function() {
+                announcementContent.classList.toggle('active');
+                toggleIcon.classList.toggle('active');
+            });
             
             // Tab switching
             tabs.forEach(tab => {
@@ -932,8 +1090,8 @@
                     currentUser.activated = true;
                     
                     // Show generator
-                    authContainer.style.display = 'none';
-                    generatorSection.classList.add('active');
+                    authSection.style.display = 'none';
+                    generatorSection.style.display = 'block';
                     
                     showNotification('Account activated! You can now generate numbers.', false);
                 }
@@ -1032,8 +1190,8 @@
                 currentUser = null;
                 generatedNumbers = [];
                 
-                generatorSection.classList.remove('active');
-                authContainer.style.display = 'flex';
+                generatorSection.style.display = 'none';
+                authSection.style.display = 'block';
                 
                 // Reset forms
                 mobileInput.value = '';
@@ -1044,6 +1202,13 @@
                 digitsInput.value = '3';
                 amountInput.value = '5';
                 outputBox.innerHTML = '<div class="placeholder">Click "Generate Numbers" to create your random numbers</div>';
+                
+                // Show signup form by default
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('.tab[data-tab="signup"]').classList.add('active');
+                signupForm.classList.add('active');
+                loginForm.classList.remove('active');
+                securityBox.classList.remove('active');
                 
                 showNotification('You have been logged out', false);
             });
