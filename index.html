@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Higher IT Institute - Secure Random Generator</title>
+    <title>Secure Number Generator | Higher IT Institute</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -21,115 +21,116 @@
             --dark: #212529;
             --light: #f8f9fa;
             --danger: #e63946;
+            --warning: #ff9e00;
         }
         
         body {
             background: linear-gradient(135deg, #1a2980, #26d0ce);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
             color: #333;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             width: 100%;
-            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
         
         /* Header Styles */
-        .agency-header {
+        .header {
             background: linear-gradient(90deg, #182848, #4b6cb7);
             color: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
         }
         
-        .agency-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
-        .logo-circle {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+        .logo {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+            animation: pulse 2s infinite;
         }
         
-        .agency-info h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
-        .agency-info p {
-            font-size: 1rem;
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
             opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
-        .social-links {
+        /* Auth Container */
+        .auth-container {
+            padding: 40px;
             display: flex;
-            gap: 15px;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            text-decoration: none;
         }
         
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Main Content Area */
-        .main-content {
-            display: flex;
-            gap: 25px;
+        .auth-box {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             margin-bottom: 30px;
         }
         
-        .auth-section {
-            flex: 1;
-            min-width: 400px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .generator-section {
-            flex: 2;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            display: none; /* Hidden by default */
-        }
-        
-        /* Form Styles */
-        .form-container {
+        .tabs {
+            display: flex;
             margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #777;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: -2px;
+        }
+        
+        .form-container {
+            display: none;
+        }
+        
+        .form-container.active {
+            display: block;
         }
         
         .form-header {
@@ -138,14 +139,13 @@
         }
         
         .form-header h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary);
             margin-bottom: 10px;
         }
         
         .form-header p {
-            color: var(--dark);
-            opacity: 0.8;
+            color: #666;
         }
         
         .form-group {
@@ -165,7 +165,7 @@
         .input-group {
             display: flex;
             align-items: center;
-            background: white;
+            background: #f8f9fa;
             border: 2px solid #e1e5ee;
             border-radius: 12px;
             padding: 5px 15px;
@@ -185,7 +185,6 @@
         
         input[type="text"],
         input[type="password"],
-        input[type="number"],
         input[type="tel"] {
             width: 100%;
             border: none;
@@ -197,7 +196,7 @@
         
         .btn {
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px;
             font-size: 1.1rem;
             font-weight: 600;
             border: none;
@@ -221,63 +220,30 @@
             box-shadow: 0 7px 15px rgba(67, 97, 238, 0.4);
         }
         
-        .btn-secondary {
-            background: linear-gradient(90deg, var(--success), #4895ef);
-            color: white;
-        }
-        
-        .btn-danger {
-            background: linear-gradient(90deg, var(--danger), #d00000);
-            color: white;
-        }
-        
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: var(--dark);
-        }
-        
-        .form-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .form-footer a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Security Code Box */
         .security-box {
-            background: #fff9e6;
-            border: 2px dashed #ffcc00;
-            border-radius: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid var(--warning);
+            border-radius: 10px;
             padding: 20px;
             margin: 25px 0;
-            text-align: center;
             display: none;
         }
         
-        .security-box h3 {
-            color: #d35400;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .security-box.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
         }
         
-        .security-code {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            background: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #eee;
-            margin: 15px 0;
-            word-break: break-all;
-            text-align: center;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .security-box h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
             color: var(--dark);
         }
         
@@ -285,24 +251,47 @@
             font-size: 0.9rem;
             color: #e74c3c;
             font-weight: 500;
+            margin-top: 15px;
         }
         
         /* Generator Styles */
+        .generator-section {
+            padding: 40px;
+            display: none;
+        }
+        
+        .generator-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .generator-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .generator-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
         .controls {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
         
         .control-group {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .control-group h3 {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--primary);
             display: flex;
             align-items: center;
@@ -321,7 +310,6 @@
             color: var(--dark);
             cursor: pointer;
             user-select: none;
-            flex: 1;
         }
         
         .custom-checkbox {
@@ -353,7 +341,7 @@
         }
         
         .output-container {
-            margin-top: 25px;
+            margin-top: 20px;
         }
         
         .output-box {
@@ -381,7 +369,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            animation: fadeIn 0.5s ease;
             position: relative;
         }
         
@@ -401,11 +388,31 @@
             font-weight: normal;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
         }
         
+        .btn-generate {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            flex: 2;
+        }
+        
+        .btn-copy {
+            background: linear-gradient(90deg, var(--success), #4895ef);
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-logout {
+            background: linear-gradient(90deg, var(--danger), #d00000);
+            color: white;
+            flex: 1;
+        }
+        
+        /* Notification */
         .notification {
             position: fixed;
             top: 30px;
@@ -427,152 +434,102 @@
             transform: translateX(0);
         }
         
-        .error-message {
-            color: var(--danger);
-            font-size: 0.9rem;
-            margin-top: 8px;
-            display: none;
-        }
-        
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            padding: 15px;
-            background: #f1f8ff;
-            border-radius: 10px;
-            font-size: 0.9rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-            flex: 1;
-        }
-        
-        .stat-value {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--primary);
+        .notification.error {
+            background: var(--danger);
         }
         
         /* Contact Footer */
         .contact-footer {
-            background: linear-gradient(90deg, #182848, #4b6cb7);
+            background: #182848;
             color: white;
             padding: 30px 20px;
-            border-radius: 15px;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .contact-footer h2 {
             text-align: center;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            color: #4fc3f7;
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 25px;
         }
         
         .contact-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 20px;
-            text-align: center;
         }
         
         .contact-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 15px;
             color: #4fc3f7;
         }
         
         .contact-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
         
         .contact-info {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 10px;
             font-weight: 500;
         }
         
-        .contact-link {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: rgba(79, 195, 247, 0.2);
-            border-radius: 30px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-link:hover {
-            background: rgba(79, 195, 247, 0.3);
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .main-content {
-                flex-direction: column;
-            }
-            .auth-section, .generator-section {
-                min-width: 100%;
-            }
-        }
-        
         @media (max-width: 768px) {
-            .agency-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
+            .header h1 {
+                font-size: 2.2rem;
             }
+            
             .controls {
                 grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .auth-container, .generator-section {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Agency Header -->
-        <div class="agency-header">
-            <div class="agency-logo">
-                <div class="logo-circle">
-                    <i class="fas fa-laptop-code"></i>
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-lock"></i>
                 </div>
-                <div class="agency-info">
-                    <h1>Higher IT Institute</h1>
-                    <p>Professional IT Training & Services</p>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com/higheritinstitute" class="social-icon" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.youtube.com/@Higher-ITInstitute" class="social-icon" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="mailto:higheritinstitute@gmail.com" class="social-icon">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                <h1>Secure Random Number Generator</h1>
+                <p>Generate custom random numbers with advanced security features</p>
             </div>
         </div>
         
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Authentication Section -->
-            <div class="auth-section" id="authSection">
-                <div class="form-container" id="signupForm">
+        <!-- Authentication Section -->
+        <div class="auth-container" id="authContainer">
+            <div class="auth-box">
+                <div class="tabs">
+                    <div class="tab active" data-tab="signup">Sign Up</div>
+                    <div class="tab" data-tab="login">Log In</div>
+                </div>
+                
+                <!-- Signup Form -->
+                <div class="form-container active" id="signupForm">
                     <div class="form-header">
-                        <h2><i class="fas fa-user-plus"></i> Create Account</h2>
-                        <p>Sign up to access our secure random number generator</p>
+                        <h2>Create Account</h2>
+                        <p>Register to access the number generator</p>
                     </div>
                     
                     <div class="form-group">
@@ -584,7 +541,6 @@
                             <i class="fas fa-phone"></i>
                             <input type="tel" id="mobile" placeholder="Enter your mobile number">
                         </div>
-                        <div class="error-message" id="mobile-error">Please enter a valid mobile number</div>
                     </div>
                     
                     <div class="form-group">
@@ -594,36 +550,19 @@
                         </label>
                         <div class="input-group">
                             <i class="fas fa-key"></i>
-                            <input type="password" id="password" placeholder="Create a password">
+                            <input type="password" id="password" placeholder="Create a password (min 6 characters)">
                         </div>
-                        <div class="error-message" id="password-error">Password must be at least 6 characters</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmPassword">
-                            <i class="fas fa-lock"></i>
-                            Confirm Password
-                        </label>
-                        <div class="input-group">
-                            <i class="fas fa-key"></i>
-                            <input type="password" id="confirmPassword" placeholder="Confirm your password">
-                        </div>
-                        <div class="error-message" id="confirm-error">Passwords do not match</div>
                     </div>
                     
                     <button class="btn btn-primary" id="signupBtn">
                         <i class="fas fa-user-plus"></i> Create Account
                     </button>
-                    
-                    <div class="form-footer">
-                        Already have an account? <a href="#" id="showLogin">Log in</a>
-                    </div>
                 </div>
                 
-                <!-- Login Form (Initially Hidden) -->
-                <div class="form-container" id="loginForm" style="display: none;">
+                <!-- Login Form -->
+                <div class="form-container" id="loginForm">
                     <div class="form-header">
-                        <h2><i class="fas fa-sign-in-alt"></i> Account Login</h2>
+                        <h2>Account Login</h2>
                         <p>Sign in to your account</p>
                     </div>
                     
@@ -636,7 +575,6 @@
                             <i class="fas fa-phone"></i>
                             <input type="tel" id="loginMobile" placeholder="Enter your mobile number">
                         </div>
-                        <div class="error-message" id="login-mobile-error">Please enter your mobile number</div>
                     </div>
                     
                     <div class="form-group">
@@ -648,115 +586,127 @@
                             <i class="fas fa-key"></i>
                             <input type="password" id="loginPassword" placeholder="Enter your password">
                         </div>
-                        <div class="error-message" id="login-password-error">Please enter your password</div>
                     </div>
                     
                     <button class="btn btn-primary" id="loginBtn">
                         <i class="fas fa-sign-in-alt"></i> Log In
                     </button>
-                    
-                    <div class="form-footer">
-                        Don't have an account? <a href="#" id="showSignup">Sign up</a>
-                    </div>
                 </div>
                 
                 <!-- Security Code Box -->
                 <div class="security-box" id="securityBox">
-                    <h3><i class="fas fa-shield-alt"></i> Security Code Required</h3>
-                    <p>For security purposes, please enter the 100-character security code that was provided to your mobile number:</p>
+                    <h3>
+                        <i class="fas fa-shield-alt"></i>
+                        Account Activation Required
+                    </h3>
+                    <p>For your security, please enter the 20-digit security code below to activate your account.</p>
                     
                     <div class="form-group">
-                        <label for="securityCode">
-                            <i class="fas fa-key"></i>
-                            Enter Security Code
-                        </label>
                         <div class="input-group">
                             <i class="fas fa-lock"></i>
-                            <input type="text" id="securityCode" placeholder="Enter 100-character security code">
+                            <input type="text" id="securityCode" placeholder="Enter 20-digit security code">
                         </div>
-                        <div class="error-message" id="security-error">Invalid security code</div>
                     </div>
                     
                     <button class="btn btn-primary" id="activateBtn">
                         <i class="fas fa-check-circle"></i> Activate Account
                     </button>
                     
-                    <p class="security-note">Note: Each security code can only be used once. If you log in from a new device, you'll need a new security code.</p>
+                    <p class="security-note">Note: Each security code can only be used once per login session.</p>
                 </div>
             </div>
             
-            <!-- Generator Section (Initially Hidden) -->
-            <div class="generator-section" id="generatorSection">
-                <div class="form-header">
-                    <h2><i class="fas fa-random"></i> Secure Random Number Generator</h2>
-                    <p>Welcome back! Generate random numbers with your specifications</p>
-                </div>
-                
-                <div class="controls">
-                    <div class="control-group">
-                        <h3><i class="fas fa-hashtag"></i> Number Configuration</h3>
-                        
-                        <div class="form-group">
-                            <label for="digits">
-                                <i class="fas fa-sort-numeric-up"></i>
-                                Number of Digits
-                            </label>
-                            <div class="input-group">
-                                <i class="fas fa-calculator"></i>
-                                <input type="number" id="digits" min="1" max="15" value="3" placeholder="Enter digits (1-15)">
-                            </div>
-                            <div class="error-message" id="digits-error">Digits must be between 1 and 15</div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="amount">
-                                <i class="fas fa-list-ol"></i>
-                                Amount of Numbers
-                            </label>
-                            <div class="input-group">
-                                <i class="fas fa-calculator"></i>
-                                <input type="number" id="amount" min="1" value="10" placeholder="Enter amount">
-                            </div>
-                            <div class="error-message" id="amount-error">Amount must be at least 1</div>
+            <div class="info-box">
+                <p><i class="fas fa-info-circle"></i> Your security is our priority. All generated numbers are created securely and never stored.</p>
+            </div>
+        </div>
+        
+        <!-- Generator Section -->
+        <div class="generator-section" id="generatorSection">
+            <div class="generator-header">
+                <h2>Random Number Generator</h2>
+                <p>Welcome! Configure and generate your random numbers</p>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <h3><i class="fas fa-cog"></i> Configuration</h3>
+                    
+                    <div class="form-group">
+                        <label for="digits">
+                            <i class="fas fa-hashtag"></i>
+                            Number of Digits
+                        </label>
+                        <div class="input-group">
+                            <i class="fas fa-calculator"></i>
+                            <input type="number" id="digits" min="1" max="15" value="3">
                         </div>
                     </div>
                     
-                    <div class="control-group">
-                        <h3><i class="fas fa-cog"></i> Generation Settings</h3>
-                        
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="allowRepeat">
-                            <div class="custom-checkbox"></div>
-                            <label for="allowRepeat">Allow duplicate numbers in results</label>
+                    <div class="form-group">
+                        <label for="amount">
+                            <i class="fas fa-list-ol"></i>
+                            Amount of Numbers
+                        </label>
+                        <div class="input-group">
+                            <i class="fas fa-calculator"></i>
+                            <input type="number" id="amount" min="1" value="5">
                         </div>
-                        
-                        <div class="buttons" style="margin-top: 20px;">
-                            <button class="btn btn-primary" id="generateBtn">
-                                <i class="fas fa-bolt"></i> Generate Numbers
-                            </button>
-                            <button class="btn btn-secondary" id="copyBtn" style="margin-top: 10px;">
-                                <i class="fas fa-copy"></i> Copy Results
-                            </button>
-                        </div>
-                        
-                        <button class="btn btn-danger" id="logoutBtn" style="margin-top: 20px;">
-                            <i class="fas fa-sign-out-alt"></i> Log Out
-                        </button>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="allowRepeat">
+                        <div class="custom-checkbox"></div>
+                        <label for="allowRepeat">Allow duplicate numbers</label>
                     </div>
                 </div>
                 
-                <div class="output-container">
-                    <label><i class="fas fa-file-export"></i> Generated Numbers</label>
-                    <div class="output-box" id="outputBox">
-                        <div class="placeholder">Your generated numbers will appear here</div>
+                <div class="control-group">
+                    <h3><i class="fas fa-key"></i> Security Status</h3>
+                    
+                    <div class="security-status">
+                        <div class="status-item">
+                            <i class="fas fa-check-circle" style="color: #4ade80;"></i>
+                            <span>Account Activated</span>
+                        </div>
+                        <div class="status-item">
+                            <i class="fas fa-shield-alt" style="color: #4361ee;"></i>
+                            <span>Secure Session</span>
+                        </div>
+                        <div class="status-item">
+                            <i class="fas fa-sync-alt" style="color: #f72585;"></i>
+                            <span>One-Time Security Code</span>
+                        </div>
+                    </div>
+                    
+                    <div class="security-tip">
+                        <p><i class="fas fa-lightbulb"></i> For enhanced security, always log out after completing your session.</p>
                     </div>
                 </div>
+            </div>
+            
+            <div class="output-container">
+                <label><i class="fas fa-file-export"></i> Generated Numbers</label>
+                <div class="output-box" id="outputBox">
+                    <div class="placeholder">Click "Generate Numbers" to create your random numbers</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-generate" id="generateBtn">
+                    <i class="fas fa-bolt"></i> Generate Numbers
+                </button>
+                <button class="btn btn-copy" id="copyBtn">
+                    <i class="fas fa-copy"></i> Copy Results
+                </button>
+                <button class="btn btn-logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
             </div>
         </div>
         
         <!-- Contact Footer -->
         <div class="contact-footer">
-            <h2>Contact Higher IT Institute</h2>
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-icon">
@@ -764,9 +714,6 @@
                     </div>
                     <h3>WhatsApp</h3>
                     <div class="contact-info">+880 1935 298 592</div>
-                    <a href="https://wa.me/8801935298592" class="contact-link" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Chat Now
-                    </a>
                 </div>
                 
                 <div class="contact-card">
@@ -775,7 +722,6 @@
                     </div>
                     <h3>Hotline</h3>
                     <div class="contact-info">09611-321694</div>
-                    <div class="contact-info">Call us anytime</div>
                 </div>
                 
                 <div class="contact-card">
@@ -784,9 +730,6 @@
                     </div>
                     <h3>Email</h3>
                     <div class="contact-info">higheritinstitute@gmail.com</div>
-                    <a href="mailto:higheritinstitute@gmail.com" class="contact-link">
-                        <i class="fas fa-paper-plane"></i> Send Email
-                    </a>
                 </div>
                 
                 <div class="contact-card">
@@ -795,10 +738,11 @@
                     </div>
                     <h3>Website</h3>
                     <div class="contact-info">higheritinstitute.top</div>
-                    <a href="https://higheritinstitute.top/" class="contact-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Visit Website
-                    </a>
                 </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Higher IT Institute. All rights reserved.
             </div>
         </div>
     </div>
@@ -811,78 +755,102 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Elements
-            const authSection = document.getElementById('authSection');
+            const authContainer = document.getElementById('authContainer');
             const generatorSection = document.getElementById('generatorSection');
             const signupForm = document.getElementById('signupForm');
             const loginForm = document.getElementById('loginForm');
             const securityBox = document.getElementById('securityBox');
             const notification = document.getElementById('notification');
             const notificationText = document.getElementById('notificationText');
+            const tabs = document.querySelectorAll('.tab');
             
-            // Form elements
-            const mobileInput = document.getElementById('mobile');
-            const passwordInput = document.getElementById('password');
-            const confirmPasswordInput = document.getElementById('confirmPassword');
-            const loginMobileInput = document.getElementById('loginMobile');
-            const loginPasswordInput = document.getElementById('loginPassword');
-            const securityCodeInput = document.getElementById('securityCode');
+            // Buttons
             const signupBtn = document.getElementById('signupBtn');
             const loginBtn = document.getElementById('loginBtn');
             const activateBtn = document.getElementById('activateBtn');
-            const showLogin = document.getElementById('showLogin');
-            const showSignup = document.getElementById('showSignup');
             const generateBtn = document.getElementById('generateBtn');
             const copyBtn = document.getElementById('copyBtn');
             const logoutBtn = document.getElementById('logoutBtn');
             
+            // Inputs
+            const mobileInput = document.getElementById('mobile');
+            const passwordInput = document.getElementById('password');
+            const loginMobileInput = document.getElementById('loginMobile');
+            const loginPasswordInput = document.getElementById('loginPassword');
+            const securityCodeInput = document.getElementById('securityCode');
+            const digitsInput = document.getElementById('digits');
+            const amountInput = document.getElementById('amount');
+            const allowRepeatCheckbox = document.getElementById('allowRepeat');
+            const outputBox = document.getElementById('outputBox');
+            
             // Current user state
             let currentUser = null;
-            let generatedSecurityCode = '';
             let generatedNumbers = [];
+            
+            // Tab switching
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding form
+                    document.querySelectorAll('.form-container').forEach(form => {
+                        form.classList.remove('active');
+                    });
+                    
+                    if (tabName === 'signup') {
+                        signupForm.classList.add('active');
+                    } else {
+                        loginForm.classList.add('active');
+                    }
+                    
+                    // Hide security box
+                    securityBox.classList.remove('active');
+                });
+            });
             
             // Show notification
             function showNotification(message, isError = false) {
                 notificationText.textContent = message;
-                notification.style.background = isError ? '#e63946' : '#4ade80';
-                notification.classList.add('show');
+                notification.className = 'notification show';
+                
+                if (isError) {
+                    notification.classList.add('error');
+                }
                 
                 setTimeout(() => {
                     notification.classList.remove('show');
                 }, 3000);
             }
             
-            // Generate security code
+            // Generate security code (10 letters + 10 numbers)
             function generateSecurityCode() {
-                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+                const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz';
+                const numbers = '23456789';
+                
                 let code = '';
                 
-                for (let i = 0; i < 100; i++) {
-                    code += chars.charAt(Math.floor(Math.random() * chars.length));
+                // Add 10 random letters
+                for (let i = 0; i < 10; i++) {
+                    code += letters.charAt(Math.floor(Math.random() * letters.length));
                 }
                 
-                return code;
+                // Add 10 random numbers
+                for (let i = 0; i < 10; i++) {
+                    code += numbers.charAt(Math.floor(Math.random() * numbers.length));
+                }
+                
+                // Shuffle the code
+                return code.split('').sort(() => 0.5 - Math.random()).join('');
             }
-            
-            // Toggle forms
-            showLogin.addEventListener('click', function(e) {
-                e.preventDefault();
-                signupForm.style.display = 'none';
-                loginForm.style.display = 'block';
-                securityBox.style.display = 'none';
-            });
-            
-            showSignup.addEventListener('click', function(e) {
-                e.preventDefault();
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-                securityBox.style.display = 'none';
-            });
             
             // Sign up process
             signupBtn.addEventListener('click', function() {
                 const mobile = mobileInput.value.trim();
                 const password = passwordInput.value;
-                const confirmPassword = confirmPasswordInput.value;
                 
                 // Validation
                 if (!mobile || mobile.length < 10) {
@@ -895,15 +863,7 @@
                     return;
                 }
                 
-                if (password !== confirmPassword) {
-                    showNotification('Passwords do not match', true);
-                    return;
-                }
-                
-                // Generate security code
-                generatedSecurityCode = generateSecurityCode();
-                
-                // Simulate account creation
+                // Create user
                 currentUser = {
                     mobile: mobile,
                     password: password,
@@ -911,10 +871,9 @@
                 };
                 
                 // Show security code input
-                signupForm.style.display = 'none';
-                securityBox.style.display = 'block';
+                securityBox.classList.add('active');
                 
-                showNotification('Account created! Please enter the security code sent to your mobile.', false);
+                showNotification('Account created! Please enter the security code to activate.', false);
             });
             
             // Login process
@@ -933,16 +892,12 @@
                     return;
                 }
                 
-                // Check if it's the same user
+                // Check if user exists
                 if (currentUser && currentUser.mobile === mobile && currentUser.password === password) {
-                    // Generate new security code for each login
-                    generatedSecurityCode = generateSecurityCode();
-                    
                     // Show security code input
-                    loginForm.style.display = 'none';
-                    securityBox.style.display = 'block';
+                    securityBox.classList.add('active');
                     
-                    showNotification('Please enter the new security code for your account', false);
+                    showNotification('Please enter the security code to activate your session', false);
                 } else {
                     showNotification('Invalid mobile number or password', true);
                 }
@@ -952,19 +907,35 @@
             activateBtn.addEventListener('click', function() {
                 const code = securityCodeInput.value.trim();
                 
-                if (code === generatedSecurityCode) {
-                    // Activate account
-                    if (currentUser) {
-                        currentUser.activated = true;
-                        
-                        // Show generator
-                        authSection.style.display = 'none';
-                        generatorSection.style.display = 'block';
-                        
-                        showNotification('Account activated! You can now use the generator.', false);
-                    }
-                } else {
-                    showNotification('Invalid security code. Please try again.', true);
+                // Validate code format (20 characters with 10 letters and 10 numbers)
+                if (code.length !== 20) {
+                    showNotification('Security code must be exactly 20 characters', true);
+                    return;
+                }
+                
+                // Count letters and numbers
+                let letterCount = 0;
+                let numberCount = 0;
+                
+                for (let char of code) {
+                    if (/[a-zA-Z]/.test(char)) letterCount++;
+                    if (/[0-9]/.test(char)) numberCount++;
+                }
+                
+                if (letterCount !== 10 || numberCount !== 10) {
+                    showNotification('Invalid security code format', true);
+                    return;
+                }
+                
+                // Activate account
+                if (currentUser) {
+                    currentUser.activated = true;
+                    
+                    // Show generator
+                    authContainer.style.display = 'none';
+                    generatorSection.classList.add('active');
+                    
+                    showNotification('Account activated! You can now generate numbers.', false);
                 }
             });
             
@@ -975,10 +946,9 @@
                     return;
                 }
                 
-                const digits = parseInt(document.getElementById('digits').value) || 3;
-                const amount = parseInt(document.getElementById('amount').value) || 10;
-                const allowRepeats = document.getElementById('allowRepeat').checked;
-                const outputBox = document.getElementById('outputBox');
+                const digits = parseInt(digitsInput.value) || 3;
+                const amount = parseInt(amountInput.value) || 5;
+                const allowRepeats = allowRepeatCheckbox.checked;
                 
                 // Validate inputs
                 if (digits < 1 || digits > 15) {
@@ -1000,12 +970,10 @@
                 
                 if (!allowRepeats && amount > (max - min + 1)) {
                     outputBox.innerHTML = `
-                        <div class="error-message" style="display:block; text-align:center; padding:20px;">
+                        <div style="text-align: center; padding: 20px; color: #e74c3c;">
                             <i class="fas fa-exclamation-triangle"></i>
                             <h3>Cannot generate unique numbers</h3>
-                            <p>With ${digits} digits, there are only ${max - min + 1} possible numbers.</p>
-                            <p>You requested ${amount} unique numbers which is not possible.</p>
-                            <p>Please allow duplicates or reduce the amount.</p>
+                            <p>With ${digits} digits, only ${max - min + 1} unique numbers are possible.</p>
                         </div>
                     `;
                     return;
@@ -1062,25 +1030,20 @@
             // Log out
             logoutBtn.addEventListener('click', function() {
                 currentUser = null;
-                generatedSecurityCode = '';
                 generatedNumbers = [];
                 
-                generatorSection.style.display = 'none';
-                authSection.style.display = 'block';
-                signupForm.style.display = 'block';
-                loginForm.style.display = 'none';
-                securityBox.style.display = 'none';
+                generatorSection.classList.remove('active');
+                authContainer.style.display = 'flex';
                 
-                // Clear inputs
+                // Reset forms
                 mobileInput.value = '';
                 passwordInput.value = '';
-                confirmPasswordInput.value = '';
                 loginMobileInput.value = '';
                 loginPasswordInput.value = '';
                 securityCodeInput.value = '';
-                document.getElementById('digits').value = '3';
-                document.getElementById('amount').value = '10';
-                document.getElementById('outputBox').innerHTML = '<div class="placeholder">Your generated numbers will appear here</div>';
+                digitsInput.value = '3';
+                amountInput.value = '5';
+                outputBox.innerHTML = '<div class="placeholder">Click "Generate Numbers" to create your random numbers</div>';
                 
                 showNotification('You have been logged out', false);
             });
