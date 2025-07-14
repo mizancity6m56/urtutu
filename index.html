@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Higher IT Institute - Bin Number Generator</title>
+    <title>Higher IT Institute - Random Number Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -101,6 +101,106 @@
             flex: 1;
         }
         
+        /* Announcement Box Styles */
+        .announcement-box {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border-radius: 15px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #fff;
+        }
+        
+        .announcement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .announcement-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 3px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .announcement-icon {
+            font-size: 1.8rem;
+        }
+        
+        .announcement-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .announcement-content.active {
+            max-height: 1000px;
+            padding: 20px;
+        }
+        
+        .announcement-content h3 {
+            color: #d35400;
+            margin: 15px 0 10px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #f1c40f;
+            padding-bottom: 5px;
+        }
+        
+        .announcement-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        .announcement-content ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .announcement-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .announcement-content li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        .important-note {
+            background: #f1c40f;
+            border-left: 4px solid #e67e22;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-icon.active {
+            transform: rotate(180deg);
+        }
+        
+        /* Rest of your existing styles */
         header {
             background: linear-gradient(90deg, #4b6cb7, #182848);
             color: white;
@@ -299,6 +399,9 @@
                 border-left: none;
                 border-top: 1px solid #eee;
                 margin-top: 20px;
+            }
+            .announcement-title {
+                font-size: 1.3rem;
             }
         }
         
@@ -535,9 +638,40 @@
     
     <div class="container">
         <header>
-            <h1><i class="fas fa-random"></i> Advanced Bin Number Generator</h1>
+            <h1><i class="fas fa-random"></i> Advanced Random Number Generator</h1>
             <p>Generate custom random numbers with complete control</p>
         </header>
+        
+        <!-- Announcement Box -->
+        <div class="announcement-box">
+            <div class="announcement-header" id="announcementToggle">
+                <div class="announcement-title">
+                    <i class="fas fa-bullhorn announcement-icon"></i>
+                    <span>𝗕𝗜𝗡 নাম্বার কি? | Important Information</span>
+                </div>
+                <div class="toggle-icon" id="toggleIcon">▼</div>
+            </div>
+            <div class="announcement-content" id="announcementContent">
+                <p><strong>BIN এর পূর্ণরুপ 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗜𝗱𝗲𝗻𝘁𝗶𝗳𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗡𝘂𝗺𝗯𝗲𝗿.</strong> প্রতিটি ব্যবসায় একটি অদ্বিতীয় বিজনেস আইডেন্টিফিকেশন নম্বর (𝗕𝗜𝗡) থাকে। এই নম্বরটিকে বিন নম্বর (BIN Number) বলা হয়।</p>
+                
+                <p>আপনি আপনার ব্যবসা প্রতিষ্ঠানের জন্য ১৩ ডিজিটের একটি ইউনিক বিজনেস আইডেনটিফিকেশন করিয়ে নিতে পারেন।</p>
+                
+                <div class="important-note">
+                    🔶 জুন, 2021 থেকে আপনি যদি এড এর পেমেন্ট সেটিংস থেকে আপনার বিজনেসের BIN নাম্বার যুক্ত না করেন, সেক্ষেত্রে এক্সট্রা ১৫% ভ্যাট ফেইসবুক আপনার কার্ড থেকে কেটে রাখবে।
+                </div>
+                
+                <p>অর্থাৎ আপনি যদি বাংলাদেশের ক্রেডিট/ডেবিট কার্ড ইউজ করে এড চালিয়ে থাকেন তাহলে সেখান থেকে একবার ১৫% কাটবে আবার ফেইসবুকে BIN Number না দিলে ফেইসবুকও এড বাজেটের উপর এক্সট্রা ১৫% ধরে কেটে রাখবে।</p>
+                
+                <h3>👉 বিন নম্বরটি কাদের জন্য?</h3>
+                
+                <ul>
+                    <li>যারা ফেসবুকে নিজের ব্যবসা তৈরি এবং প্রচার করতে চায়।</li>
+                    <li>যারা ফেসবুক বুস্টিং নিয়ে কাজ করেন।</li>
+                    <li>যারা ফেসবুকে কম খরচে নিজেদের কাস্টমার তৈরি করতে চায়।</li>
+                    <li>যারা ফেসবুকে মার্কেটিং নিয়ে কাজ করেন।</li>
+                </ul>
+            </div>
+        </div>
         
         <div class="content">
             <div class="controls">
@@ -703,6 +837,17 @@
             const digitsValue = document.getElementById('digits-value');
             const amountValue = document.getElementById('amount-value');
             const duplicatesValue = document.getElementById('duplicates-value');
+            
+            // Announcement toggle
+            const announcementToggle = document.getElementById('announcementToggle');
+            const announcementContent = document.getElementById('announcementContent');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            // Toggle announcement content
+            announcementToggle.addEventListener('click', function() {
+                announcementContent.classList.toggle('active');
+                toggleIcon.classList.toggle('active');
+            });
             
             // Current settings
             let currentDigits = 3;
