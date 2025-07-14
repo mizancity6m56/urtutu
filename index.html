@@ -363,7 +363,7 @@
             margin-top: 15px;
         }
         
-        /* Generator Section */
+        /* Generator Section - Original Design */
         .generator-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
@@ -384,32 +384,88 @@
             margin-bottom: 10px;
         }
         
-        .controls {
+        .generator-header p {
+            color: #666;
+        }
+        
+        /* Original Generator Controls */
+        .original-controls {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin-bottom: 30px;
         }
         
-        .control-group {
+        .control-card {
             background: #f8f9fa;
-            padding: 25px;
             border-radius: 15px;
+            padding: 25px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .control-group h3 {
-            margin-bottom: 20px;
+        .control-card h3 {
             color: var(--primary);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
+        .digit-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .digit-option {
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e1e5ee;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .digit-option:hover, .digit-option.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .input-control {
+            margin-top: 15px;
+        }
+        
+        .input-control label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .input-control input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e5ee;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .input-control input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+        
         .checkbox-container {
             display: flex;
             align-items: center;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         
         .checkbox-container label {
@@ -448,6 +504,48 @@
             transform: translate(-50%, -50%) scale(1);
         }
         
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .generate-btn {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(67, 97, 238, 0.4);
+        }
+        
+        .copy-btn {
+            background: linear-gradient(90deg, var(--success), #4895ef);
+            color: white;
+        }
+        
+        .logout-btn {
+            background: linear-gradient(90deg, var(--danger), #d00000);
+            color: white;
+        }
+        
+        /* Original Output Box */
         .output-container {
             margin-top: 20px;
         }
@@ -478,6 +576,12 @@
             align-items: center;
             gap: 15px;
             position: relative;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .output-number::before {
@@ -494,30 +598,6 @@
             font-size: 0.7rem;
             color: #6c757d;
             font-weight: normal;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-        
-        .btn-generate {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            flex: 2;
-        }
-        
-        .btn-copy {
-            background: linear-gradient(90deg, var(--success), #4895ef);
-            color: white;
-            flex: 1;
-        }
-        
-        .btn-logout {
-            background: linear-gradient(90deg, var(--danger), #d00000);
-            color: white;
-            flex: 1;
         }
         
         /* Notification */
@@ -601,7 +681,7 @@
                 gap: 15px;
             }
             
-            .controls {
+            .original-controls {
                 grid-template-columns: 1fr;
             }
             
@@ -770,37 +850,25 @@
             </div>
         </div>
         
-        <!-- Generator Section -->
+        <!-- Generator Section - Original Design -->
         <div class="generator-section" id="generatorSection">
             <div class="generator-header">
                 <h2>Secure Random Number Generator</h2>
-                <p>Welcome! Configure and generate your random numbers</p>
+                <p>Welcome! Generate custom random numbers with your specifications</p>
             </div>
             
-            <div class="controls">
-                <div class="control-group">
-                    <h3><i class="fas fa-cog"></i> Configuration</h3>
+            <div class="original-controls">
+                <div class="control-card">
+                    <h3><i class="fas fa-cog"></i> Number Configuration</h3>
                     
-                    <div class="form-group">
-                        <label for="digits">
-                            <i class="fas fa-hashtag"></i>
-                            Number of Digits
-                        </label>
-                        <div class="input-group">
-                            <i class="fas fa-calculator"></i>
-                            <input type="number" id="digits" min="1" max="15" value="3">
-                        </div>
+                    <div class="input-control">
+                        <label for="digits">Number of Digits</label>
+                        <input type="number" id="digits" min="1" max="15" value="3">
                     </div>
                     
-                    <div class="form-group">
-                        <label for="amount">
-                            <i class="fas fa-list-ol"></i>
-                            Amount of Numbers
-                        </label>
-                        <div class="input-group">
-                            <i class="fas fa-calculator"></i>
-                            <input type="number" id="amount" min="1" value="5">
-                        </div>
+                    <div class="input-control">
+                        <label for="amount">Amount of Numbers</label>
+                        <input type="number" id="amount" min="1" value="10">
                     </div>
                     
                     <div class="checkbox-container">
@@ -810,7 +878,7 @@
                     </div>
                 </div>
                 
-                <div class="control-group">
+                <div class="control-card">
                     <h3><i class="fas fa-key"></i> Security Status</h3>
                     
                     <div class="security-status">
@@ -834,23 +902,23 @@
                 </div>
             </div>
             
+            <div class="action-buttons">
+                <button class="action-btn generate-btn" id="generateBtn">
+                    <i class="fas fa-bolt"></i> Generate Numbers
+                </button>
+                <button class="action-btn copy-btn" id="copyBtn">
+                    <i class="fas fa-copy"></i> Copy Results
+                </button>
+                <button class="action-btn logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
+            </div>
+            
             <div class="output-container">
                 <label><i class="fas fa-file-export"></i> Generated Numbers</label>
                 <div class="output-box" id="outputBox">
-                    <div class="placeholder">Click "Generate Numbers" to create your random numbers</div>
+                    <div class="placeholder">Your generated numbers will appear here</div>
                 </div>
-            </div>
-            
-            <div class="action-buttons">
-                <button class="btn btn-generate" id="generateBtn">
-                    <i class="fas fa-bolt"></i> Generate Numbers
-                </button>
-                <button class="btn btn-copy" id="copyBtn">
-                    <i class="fas fa-copy"></i> Copy Results
-                </button>
-                <button class="btn btn-logout" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i> Log Out
-                </button>
             </div>
         </div>
         
@@ -1105,7 +1173,7 @@
                 }
                 
                 const digits = parseInt(digitsInput.value) || 3;
-                const amount = parseInt(amountInput.value) || 5;
+                const amount = parseInt(amountInput.value) || 10;
                 const allowRepeats = allowRepeatCheckbox.checked;
                 
                 // Validate inputs
@@ -1200,8 +1268,9 @@
                 loginPasswordInput.value = '';
                 securityCodeInput.value = '';
                 digitsInput.value = '3';
-                amountInput.value = '5';
-                outputBox.innerHTML = '<div class="placeholder">Click "Generate Numbers" to create your random numbers</div>';
+                amountInput.value = '10';
+                allowRepeatCheckbox.checked = false;
+                outputBox.innerHTML = '<div class="placeholder">Your generated numbers will appear here</div>';
                 
                 // Show signup form by default
                 tabs.forEach(t => t.classList.remove('active'));
